@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk" ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <ItemGroup>
+        <Reference Include="System"/>
+        <Reference Include="../dependencies\*.dll"/>
+        <Reference Include="../target/netflake.dll"/>
+        <Compile Include="TestServer.cs"/>
+    </ItemGroup>
+
+    <Target Name="Build">
+        <MakeDir Directories="$(OutputPath)" Condition="!Exists('$(OutputPath)')"/>
+        <Csc Platform="x64" NoWarn="" Sources="@(Compile)" OutputAssembly="$(OutputPath)$(AssemblyName).exe"/>
+    </Target>
+
+    <PropertyGroup>
+        <AssemblyName>server</AssemblyName>
+        <OutputPath>target\</OutputPath>
+        <OutputType>exe</OutputType>
+        <TargetFramework>4.5.1</TargetFramework>
+    </PropertyGroup>
+
+    <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets"/>
+</Project>

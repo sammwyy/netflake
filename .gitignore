@@ -1,0 +1,7 @@
+# Compilation directories
+obj/
+target/
+
+# Testing compilation directories
+test/obj/
+test/target/
